@@ -23,6 +23,6 @@ You can check it out on : https://fakestore-by-suraj.netlify.app/
 If You are running it locally. 
 create a .env file and paste below details.
 
-VITE_CHEC_PUBLIC_KEY = your_commer.js_public_key
-VITE_STRIPE_PUBLIC_KEY = your_stripe_public_key
+* VITE_CHEC_PUBLIC_KEY = your_commer.js_public_key
+* VITE_STRIPE_PUBLIC_KEY = your_stripe_public_key
  
