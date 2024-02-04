@@ -18,3 +18,11 @@ You can check it out on : https://fakestore-by-suraj.netlify.app/
 
 ## Confirmation Page
 * contains ThankYou message and Order Ref number.
+
+### Note: 
+If You are running it locally. 
+create a .env file and paste below details.
+
+VITE_CHEC_PUBLIC_KEY = your_commer.js_public_key
+VITE_STRIPE_PUBLIC_KEY = your_stripe_public_key
+ 
