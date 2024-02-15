@@ -1,10 +1,7 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useEffect, useState } from 'react'
 import { commerce } from './lib/commerce';
-import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Products, Navbar, Cart, Checkout } from './components';
-import Register from './components/Register';
-import Login from './components/Login';
-import axios from 'axios';
 
 
 
@@ -13,9 +10,6 @@ function App() {
   const [cart, setCart] = useState({});
   const [order, setOrder] = useState({});
   const [errorMessage, setErrorMessage] = useState('');
-
-  // const [currentUser, setCurrentUser] = useState(null);
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const fetchProducts = async () => {
     const { data } = await commerce.products.list();
@@ -61,20 +55,10 @@ function App() {
     }
   }
 
-//   const fetchCurrentUser = async () => {
-//     const response = await axios.get('current-user', {withCredentials: true});
-  
-//     console.log(response);
-//     if (response.data.success === true) {
-//       setCurrentUser(response.data.data.username);
-//       setIsLoggedIn(true);
-//     } 
-// };
 
   useEffect(() => {
     fetchProducts();
     fetchCart();
-    //fetchCurrentUser();
   }, []);
   
 
@@ -83,8 +67,6 @@ function App() {
       <div>
       <Navbar totalItems={cart?.total_items} />
           <Routes>
-            {/* <Route path='/register' element={isLoggedIn ? <Navigate to='/' /> : <Register />}></Route>
-            <Route path='/login' element={isLoggedIn ? <Navigate to='/' /> : <Login />}></Route> */}
             <Route path='/' element={<Products products={products} onAddToCart={handleAddToCart} />}>
             </Route>
             <Route path='/cart' element={<Cart

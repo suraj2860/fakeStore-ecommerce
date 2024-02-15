@@ -12,39 +12,6 @@ function Navbar({ totalItems }) {
     const classes = useStyles();
     const location = useLocation();
 
-    const [navigate, setNavigate] = useState(false);
-    //const [name, setName] = useState('');
-
-
-    // useEffect(() => {
-    //     (async () => {
-    //         try{
-    //             const {data} = await axios.get('current-user');
-    //             setName(data.username);
-    //         } catch (error) {
-    //             console.log(error);
-    //             setNavigate(true);
-    //         }
-    //     })();
-    // },[]);
-
-    // const logout = async () => {
-    //     await axios.post('logout', {}, { withCredentials: true });
-
-    //     setNavigate(true);
-    //     setIsLoggedIn(false);
-    // }
-
-    // if (navigate) {
-    //     return (
-    //         <>
-    //         <Navbar />
-    //         <Navigate to='/login' />
-    //         </>
-    //     );
-    // }
-
-
     const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
 
     return (
@@ -63,8 +30,6 @@ function Navbar({ totalItems }) {
                                     <ShoppingCart />
                                 </Badge>
                             </IconButton>}
-                        {/* <Typography variant='subtitle1'>{name}</Typography> */}
-                        {/* {location.pathname === '/login' && <Button component={Link} to='/register' variant="outlined">Register</Button>} */}
                         {!isAuthenticated && <Button onClick={loginWithRedirect} variant="outlined">Login</Button>}
                         {isAuthenticated && <Button variant="outlined" onClick={logout}>Logout</Button>}
                     </div>
