@@ -14,11 +14,11 @@ function PaymentForm({ checkoutToken, shippingData, backStep, handleCaptureCheck
 
     const cardElement = elements.getElement(CardElement);
 
-    const { error, paymentMethod } = await stripe.createPaymentMethod({ type: 'card', card: cardElement });
+    //const { error, paymentMethod } = await stripe.createPaymentMethod({ type: 'card', card: cardElement });
 
-    if (error) {
-      console.log(error);
-    } else {
+    // if (error) {
+    //   console.log(error);
+    // } else {
       const orderData = {
         line_item: checkoutToken.line_item,
         customer: { firstname: shippingData.firstName, lastname: shippingData.lastName, email: shippingData.email },
@@ -45,7 +45,7 @@ function PaymentForm({ checkoutToken, shippingData, backStep, handleCaptureCheck
       handleCaptureCheckout(checkoutToken.id, orderData);
       //timeout();
       nextStep();
-    }
+    // }
   }
 
   return (

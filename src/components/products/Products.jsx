@@ -1,8 +1,9 @@
-import React from 'react'
+import React,{useState, useEffect} from 'react'
 import { Grid } from '@material-ui/core';
-
+import axios from 'axios';
 import Product from './Product/Product';
 import useStyles from './styles';
+import {Navigate} from 'react-router-dom';
 
 
 // const products = [
@@ -12,7 +13,7 @@ import useStyles from './styles';
 
 const Products = ({ products, onAddToCart }) => {
     const classes = useStyles();
-
+    
     return (
         <main className={classes.content}>
             <div className={classes.toolbar} />

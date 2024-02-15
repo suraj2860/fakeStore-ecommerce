@@ -3,9 +3,12 @@ import { Container, Typography, Button, Grid } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import useStyles from './styles';
 import CartItem from './CartItem/CartItem';
+import { useAuth0 } from '@auth0/auth0-react';
+
 
 function Cart({ cart, handleUpdateCartQnty, handleRemoveFromCart, handleEmptyCart }) {
     const classes = useStyles();
+    const { loginWithRedirect, isAuthenticated } = useAuth0();
 
     const EmptyCart = () => (
         <Typography variant='subtitle1'>You have no items in you shopping cart, 
@@ -26,7 +29,8 @@ function Cart({ cart, handleUpdateCartQnty, handleRemoveFromCart, handleEmptyCar
                 <Typography variant='h5'> Subtotal: {cart.subtotal.formatted_with_symbol}</Typography>
                 <div>
                     <Button className={classes.emptyButton} onClick={handleEmptyCart} size="medium" type="button" variant="contained" color="secondary" >Empty cart</Button>
-                    <Button component={Link} to='/checkout' className={classes.checkoutButton} size="medium" type="button" variant="contained" color="primary">Checkout</Button>
+                    {isAuthenticated && <Button component={Link} to='/checkout' className={classes.checkoutButton} size="medium" type="button" variant="contained" color="primary">Checkout</Button>}
+                    {!isAuthenticated && <Button onClick={loginWithRedirect} className={classes.checkoutButton} size="medium" type="button" variant="contained" color="primary">Checkout</Button>}
                 </div>
             </div>
         </>
